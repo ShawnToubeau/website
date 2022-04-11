@@ -1,0 +1,16 @@
+{
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "author": "",
+  "scripts": {
+    "build": "parcel build index.html 404.html",
+    "dev": "parcel index.html --open"
+  },
+  "devDependencies": {
+    "@parcel/packager-raw-url": "2.4.1",
+    "@parcel/transformer-webmanifest": "2.4.1",
+    "parcel": "^2.4.1"
+  }
+}
