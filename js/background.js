@@ -5,10 +5,11 @@ let xoff = 0;
 let yoff = 0;
 
 class AveragedSquare {
-    constructor(x, y, l) {
+    constructor(x, y, l, h) {
         this.x = x
         this.y = y
         this.l = l
+        this.h = h
         this.hue = random(360)
         this.color = color(this.hue, saturation, brightness)
     }
@@ -16,7 +17,7 @@ class AveragedSquare {
     draw() {
         noStroke()
         fill(this.color)
-        square(this.x, this.y, this.l + 0.5, 0)
+        rect(this.x, this.y, this.l + 0.5, this.h + 0.5)
     }
 }
 
@@ -26,8 +27,8 @@ class Squares {
         this.NUM_SQUARES = 100
         this.SPACING = 20
 
-        let l = windowWidth / (this.NUM_SQUARES + this.SPACING)
-        let h = windowWidth / (this.NUM_SQUARES + this.SPACING)
+        let l = displayWidth / (this.NUM_SQUARES + this.SPACING)
+        let h = displayHeight / (this.NUM_SQUARES + this.SPACING)
         let lengthMargin = l / this.NUM_SQUARES
         let heightMargin = h / this.NUM_SQUARES
 
@@ -38,7 +39,7 @@ class Squares {
             for (let j = 0; j < this.NUM_SQUARES; j++) {
                 let y = j * h + this.SPACING * j * heightMargin + heightMargin * this.SPACING / 2
 
-                curRow.push(new AveragedSquare(x, y, l))
+                curRow.push(new AveragedSquare(x, y, l, h))
             }
 
             this.squares.push(curRow)
@@ -102,7 +103,7 @@ function setup() {
     noStroke()
     colorMode(HSB, 360, 100, 100)
     angleMode(DEGREES)
-    createCanvas(windowWidth, windowHeight)
+    createCanvas(displayWidth, displayHeight)
 
     squares = new Squares()
 }
@@ -114,5 +115,5 @@ function draw() {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(displayWidth, displayHeight);
 }
